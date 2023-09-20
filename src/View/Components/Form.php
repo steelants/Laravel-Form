@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Test extends Component
+class Form extends Component
 {
     public string $action;
     public string $method = "GET";
@@ -27,6 +27,6 @@ class Test extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('form::test');
+        return view('form::form');
     }
 }

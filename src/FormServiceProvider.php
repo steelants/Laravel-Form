@@ -5,7 +5,7 @@ namespace SteelAnts\Form;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use SteelAnts\Form\View\Components\Button;
-use SteelAnts\Form\View\Components\Test;
+use SteelAnts\Form\View\Components\Form;
 use SteelAnts\Form\View\Components\Input;
 use SteelAnts\Form\View\Components\Submit;
 
@@ -14,10 +14,10 @@ class FormServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        Blade::component('form', Form::class);
         Blade::component('form-input', Input::class);
         Blade::component('form-button', Button::class);
         Blade::component('form-submit', Submit::class);
-        Blade::component('test', Test::class);
 
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/components', 'form');
