@@ -1,0 +1,26 @@
+{
+    "name": "steelants/form",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^10.24",
+        "livewire/livewire": "2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SteelAnts\\Form\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "steelants"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SteelAnts\\Form\\FormServiceProvider"
+            ]
+        }
+    }
+}
