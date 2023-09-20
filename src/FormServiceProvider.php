@@ -19,7 +19,6 @@ class FormServiceProvider extends ServiceProvider
         Blade::component('form-button', Button::class);
         Blade::component('form-submit', Submit::class);
 
-
         $this->loadViewsFrom(__DIR__ . '/../resources/views/components', 'form');
         // $this->publishes([
         //     __DIR__ . '/../resources/views/livewire/' => resource_path('views/vendor/modal'),
