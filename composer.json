@@ -1,21 +1,22 @@
 {
     "name": "steelants/form",
+    "description": "Simple Form Builder class based on Laravel & Bootstrap 5",
     "type": "library",
-    "require": {
-        "laravel/framework": "^10.24",
-        "livewire/livewire": "2"
-    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "SteelAnts\\Form\\": "src/"
+            "SteelAnts\\DataTable\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "steelants"
+            "name": "SteelAnts"
         }
     ],
+    "require": {
+        "laravel/framework": "^10.24",
+        "livewire/livewire": "2"
+    },
     "extra": {
         "laravel": {
             "providers": [
