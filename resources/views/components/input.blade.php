@@ -15,6 +15,7 @@
         @if (isset($value) && !empty($value)) value="{{$value}}" @endif
         @if (isset($placeholder) && !empty($placeholder)) placeholder="{{$placeholder}}" @endif
         @if (isset($required) && $required) required @endif
+        @if (isset($livewireModel) && !empty($livewireModel)) wire:model.debounce.500ms={{$livewireModel}} @endif
     >
     @error($name)
         <div class="alert alert-danger">{{ $message }}</div>

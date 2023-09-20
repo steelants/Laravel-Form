@@ -15,6 +15,7 @@ class Input extends Component
     public string $placeholder = "";
     public array $class = [];
     public bool $required = false;
+    public string $livewireModel = "";
 
     /**
      * Create a new component instance.
@@ -27,6 +28,7 @@ class Input extends Component
         string $placeholder = "",
         array $class = [],
         bool $required = false,
+        string $livewireModel = "",
     ) {
        $this->id = $id;
        $this->name = $name;
@@ -35,6 +37,8 @@ class Input extends Component
        $this->placeholder = $placeholder;
        $this->class  = $class;
        $this->required  = $required;
+       $this->livewireModel  = $livewireModel;
+
     }
 
     /**

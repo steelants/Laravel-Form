@@ -8,17 +8,21 @@ use Illuminate\View\Component;
 
 class Form extends Component
 {
-    public string $action;
+    public string $action = "#";
+    public string $livewireAction = "";
     public string $method = "GET";
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        string $action,
+        string $action = "#",
+        string $livewireAction = "",
         string $method = "GET",
+
     ) {
         $this->action = $action;
+        $this->livewireAction = $livewireAction;
         $this->method = $method;
     }
 
