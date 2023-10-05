@@ -1,6 +1,5 @@
-<div>
+<div class="mb-3">
     <textarea class="summernote" name="{{ $name }}" id="{{ $id }}">{!! $value !!}</textarea>
-
 
     @push('scripts')
         <script>

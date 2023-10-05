@@ -1,12 +1,11 @@
-<div class="input-group mb-3">
+<div class="mb-3">
     @if (isset($label) && !empty($label))
-        <span
-            class="input-group-text"
+        <label
+            class="form-label"
             @if (isset($id) && !empty($id)) id="{{$value}}-label" @endif
-        >{{ $label }}</span>
+        >{{ $label }}</label>
     @endif
     <input
-        aria-describedby="basic-addon1"
         class="form-control @error($name) is-invalid @enderror"
         type="text"
         @if (isset($id) && !empty($id)) id="{{$id}}" @endif
@@ -18,6 +17,6 @@
         @if (isset($livewireModel) && !empty($livewireModel)) wire:model.debounce.500ms={{$livewireModel}} @endif
     >
     @error($name)
-        <div class="alert alert-danger">{{ $message }}</div>
+        <div class="invalid-feedback" role="alert">{{ $message }}</div>
     @enderror
 </div>

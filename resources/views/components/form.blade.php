@@ -5,7 +5,6 @@
     @else
         action="{{ $action }}"
     @endif
-    class="row g-3"
 >
     {{ $slot }}
 </form>

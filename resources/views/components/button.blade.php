@@ -1,9 +1,9 @@
-<div class="input-group mb-3">
-    <input
-        type="button"
-        class="btn btn-primary mb-3"
+<div>
+    <button type="button"
+        class="btn btn-secondary"
         @if (isset($id) && !empty($id)) id="{{$id}}" @endif
         @if (isset($name) && !empty($name)) name="{{$name}}" @endif
-        value = "@if (isset($text) && !empty($text)) {{$text}} @endif"
-    />
+    >
+        @if (isset($text) && !empty($text)) {{$text}} @endif
+    </button>
 </div>
