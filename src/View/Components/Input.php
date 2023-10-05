@@ -8,36 +8,21 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    public string $id;
-    public string $name;
-    public string $label = "";
-    public string $value = "";
-    public string $placeholder = "";
-    public array $class = [];
-    public bool $required = false;
-    public string $livewireModel = "";
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        string $id,
-        string $name,
-        string $label = "",
-        string $value = "",
-        string $placeholder = "",
-        array $class = [],
-        bool $required = false,
-        string $livewireModel = "",
+        public string $id,
+        public string $name,
+        public string $label = "",
+        public string $value = "",
+        public string $placeholder = "",
+        public array $class = [],
+        public bool $required = false,
+        public string $livewireModel = "",
+        public string $type = "text",
     ) {
-       $this->id = $id;
-       $this->name = $name;
-       $this->label = $label;
-       $this->value = $value;
-       $this->placeholder = $placeholder;
-       $this->class  = $class;
-       $this->required  = $required;
-       $this->livewireModel  = $livewireModel;
 
     }
 

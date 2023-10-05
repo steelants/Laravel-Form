@@ -7,7 +7,7 @@
     @endif
     <input
         class="form-control @error($name) is-invalid @enderror"
-        type="text"
+        type="{{$type ?? 'text'}}"
         @if (isset($id) && !empty($id)) id="{{$id}}" @endif
         @if (isset($name) && !empty($name)) name="{{$name}}" @endif
         @if (isset($label) && !empty($label)) aria-label="{{$label}}" @endif
