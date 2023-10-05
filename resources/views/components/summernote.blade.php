@@ -1,5 +1,7 @@
 <div class="mb-3">
-    <textarea class="summernote" name="{{ $name }}" id="{{ $id }}">{!! $value !!}</textarea>
+    <textarea class="summernote" name="{{ $name }}" id="{{ $id }}"
+        @if (isset($livewireModel) && !empty($livewireModel)) wire:model={{$livewireModel}} @endif
+    >{!! $value !!}</textarea>
 
     @push('scripts')
         <script>
