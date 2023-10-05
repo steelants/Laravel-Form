@@ -22,3 +22,6 @@
 git tag x.x.x
 git push --tags
 ```
+
+## Summernote support
+Include JS and CSS files from [Summernote github](https://github.com/summernote/summernote/)
