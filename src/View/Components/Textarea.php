@@ -16,6 +16,7 @@ class Textarea extends Component
         public string $id,
         public string $name,
         public string $label = "",
+        public string $help = "",
         public string $value = "",
         public array $class = [],
         public bool $required = false,

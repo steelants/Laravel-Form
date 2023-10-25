@@ -14,6 +14,9 @@
         @if (isset($required) && $required) required @endif
         @if (isset($livewireModel) && !empty($livewireModel)) wire:model={{$livewireModel}} @endif
     >@if (isset($value) && !empty($value)){{$value}} @endif </textarea>
+    @if (isset($help) && !empty($help))
+        <div class="form-text">{{$help}}</div>
+    @endif
     @error($name)
         <div class="invalid-feedback" role="alert">{{ $message }}</div>
     @enderror

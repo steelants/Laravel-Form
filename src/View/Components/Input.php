@@ -16,6 +16,7 @@ class Input extends Component
         public string $id,
         public string $name,
         public string $label = "",
+        public string $help = "",
         public string $value = "",
         public string $placeholder = "",
         public array $class = [],
