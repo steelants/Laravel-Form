@@ -39,7 +39,6 @@ class Button extends Component
      */
     public function render(): View|Closure|string
     {
-        dump($this->class );
         return view('form::button');
     }
 }
