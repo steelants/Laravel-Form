@@ -12,7 +12,8 @@ class Button extends Component
     public string $name;
     public string $text;
     public string $label = "";
-    public array $class = [];
+    public string $class = "";
+    public bool $confirmation = false;
 
     /**
      * Create a new component instance.
@@ -22,13 +23,15 @@ class Button extends Component
         string $name,
         string $text,
         string $label = "",
-        array $class = [],
+        string $class = "",
+        bool $confirmation = false,
     ) {
        $this->id = $id;
        $this->name = $name;
        $this->text = $text;
        $this->label = $label;
        $this->class  = $class;
+       $this->confirmation  = $confirmation;
     }
 
     /**
@@ -36,6 +39,7 @@ class Button extends Component
      */
     public function render(): View|Closure|string
     {
+        dump($this->class );
         return view('form::button');
     }
 }

@@ -9,13 +9,22 @@ use Illuminate\View\Component;
 class Submit extends Component
 {
     public string $text;
+    public string $class = "false";
+    public bool $confirmation = false;
+
+
     /**
      * Create a new component instance.
      */
     public function __construct(
         string $text,
+        bool $confirmation = false,
+        string $class = ""
     ) {
        $this->text = $text;
+       $this->confirmation = $confirmation;
+       $this->class = $class;
+
     }
 
     /**
@@ -23,6 +32,7 @@ class Submit extends Component
      */
     public function render(): View|Closure|string
     {
+        dump($this->class);
         return view('form::submit');
     }
 }
