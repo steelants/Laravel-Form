@@ -17,8 +17,8 @@
             styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5'],
             callbacks: {
                 @if (isset($livewireModel) && !empty($livewireModel))
-                    onChange: function($contents, $editable) {
-                        @this.{{ $livewireModel }} = $contents;
+                    onChange: function($content, $editable) {
+                        @this.{{ $livewireModel }} = $content;
                     },
                 @endif
                 onPaste: function(e) {
