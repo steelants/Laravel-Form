@@ -13,16 +13,17 @@ class Input extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $id,
         public string $name,
+        public string $id = '',
         public string $label = "",
         public string $help = "",
         public string $value = "",
         public string $placeholder = "",
-        public array $class = [],
         public bool $required = false,
         public string $livewireModel = "",
         public string $type = "text",
+        public string $groupClass = "",
+        public string $class = "",
     ) {
 
     }

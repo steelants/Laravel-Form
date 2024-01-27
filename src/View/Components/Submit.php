@@ -8,22 +8,15 @@ use Illuminate\View\Component;
 
 class Submit extends Component
 {
-    public string $text;
-    public string $class = "false";
-    public bool $confirmation = false;
-
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        string $text,
-        bool $confirmation = false,
-        string $class = ""
+        public ?string $text = null,
+        public bool $confirmation = false,
+        public string $class = ""
     ) {
-       $this->text = $text;
-       $this->confirmation = $confirmation;
-       $this->class = $class;
 
     }
 

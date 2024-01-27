@@ -8,30 +8,17 @@ use Illuminate\View\Component;
 
 class Button extends Component
 {
-    public string $id;
-    public string $name;
-    public string $text;
-    public string $label = "";
-    public string $class = "";
-    public bool $confirmation = false;
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        string $id,
-        string $name,
-        string $text,
-        string $label = "",
-        string $class = "",
-        bool $confirmation = false,
+        public ?string $text = null,
+        public string $id = '',
+        public string $name = '',
+        public bool $confirmation = false,
     ) {
-       $this->id = $id;
-       $this->name = $name;
-       $this->text = $text;
-       $this->label = $label;
-       $this->class  = $class;
-       $this->confirmation  = $confirmation;
+
     }
 
     /**

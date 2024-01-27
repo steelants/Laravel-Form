@@ -17,6 +17,8 @@ class Summernote extends Component
         public int $height = 100,
         public array $mentions = [],
         public string $livewireModel = "",
+        public string $groupClass = "",
+        public string $class = "",
     ) {
         if(empty($this->id)){
             $this->id = 'summernote-'.Str::random(10);

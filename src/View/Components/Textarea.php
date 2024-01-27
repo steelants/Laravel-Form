@@ -13,14 +13,15 @@ class Textarea extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $id,
         public string $name,
+        public string $id = '',
         public string $label = "",
         public string $help = "",
         public string $value = "",
-        public array $class = [],
         public bool $required = false,
         public string $livewireModel = "",
+        public string $groupClass = "",
+        public string $class = "",
     ) {
 
     }

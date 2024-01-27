@@ -1,5 +1,5 @@
-<div class="mb-3">
-    <textarea class="summernote" id="{{ $id }}" name="{{ $name }}">{!! $value !!}</textarea>
+<div class="{{ $groupClass }}">
+    <textarea class="summernote {{ $class }}" id="{{ $id }}" name="{{ $name }}" >{!! $value !!}</textarea>
 
     <script>
         $("#{{ $id }}").summernote({

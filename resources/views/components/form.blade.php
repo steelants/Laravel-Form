@@ -1,6 +1,6 @@
 <form
     method="{{ $method }}"
-    @if(isset($livewireAction) && !empty($livewireAction))
+    @if(!empty($livewireAction))
         wire:submit.prevent="{{ $livewireAction }}"
     @else
         action="{{ $action }}"
