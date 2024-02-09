@@ -5,23 +5,22 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use SteelAnts\Form\FromErrorKeyTrait;
 
 class Textarea extends Component
 {
+
+    use FromErrorKeyTrait;
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $name,
-        public string $id = '',
-        public string $label = "",
-        public string $help = "",
-        public string $value = "",
-        public bool $required = false,
-        public string $livewireModel = "",
-        public string $groupClass = "",
-        public string $class = "",
+        public ?string $name = null,
+        public ?string $label = null,
+        public mixed $value = null,
+        public ?string $groupClass = null,
+        public ?string $help = null,
     ) {
 
     }
@@ -31,6 +30,6 @@ class Textarea extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('form::textarea');
+        return 'form::components.textarea';
     }
 }

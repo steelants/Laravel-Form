@@ -12,11 +12,12 @@ class Form extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $action = "#",
-        public string $livewireAction = "",
-        public string $method = "GET",
+        public ?string $method = null,
+        public ?string $action = null,
     ) {
-
+        if(isset($method)){
+            $this->method = strtoupper($method);
+        }
     }
 
     /**
@@ -24,6 +25,6 @@ class Form extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('form::form');
+        return view('form::components.form');
     }
 }

@@ -14,9 +14,9 @@ class Button extends Component
      */
     public function __construct(
         public ?string $text = null,
-        public string $id = '',
-        public string $name = '',
-        public bool $confirmation = false,
+        public ?string $id = null,
+        public ?string $name = null,
+        public ?string $confirm = null,
     ) {
 
     }
@@ -26,6 +26,6 @@ class Button extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('form::button');
+        return view('form::components.button');
     }
 }

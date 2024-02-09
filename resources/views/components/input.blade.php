@@ -1,28 +1,26 @@
 <div class="{{ $groupClass }}">
-    @if (isset($label) && !empty($label))
-        <label
-            class="form-label"
-            @if (isset($id) && !empty($id)) for="{{$id}}" id="{{$id}}-label" @endif
+    @if (!empty($label))
+        <label class="form-label" 
+            @isset($id) for="{{ $id }}" id="{{ $id }}-label" @endisset
         >
             {{ $label }}
         </label>
     @endif
-    <input
-        class="form-control @error($name) is-invalid @enderror {{ $class }}"
-        @if (!empty($id)) id="{{$id}}" @endif
-        @if (!empty($name)) name="{{$name}}" @endif
-        @if (!empty($label)) aria-label="{{$label}}" @endif
-        @if (!empty($value)) value="{{$value}}" @endif
-        @if (!empty($placeholder)) placeholder="{{$placeholder}}" @endif
-        @if ($required) required @endif
-        @if (isset($livewireModel) && !empty($livewireModel)) wire:model={{$livewireModel}} @endif
+
+    <input 
+        @isset($id) id="{{ $id }}" @endisset
+        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($getErrorKey())]) }}
+        @isset($name) 
+            name="{{ $name }}" 
+            value="{{ old($name, $value) }}"
+        @endisset
     >
-    
-    @error($name)
+
+    @error($getErrorKey())
         <div class="invalid-feedback" role="alert">{{ $message }}</div>
     @enderror
 
     @if (isset($help) && !empty($help))
-        <div class="form-text">{{$help}}</div>
+        <div class="form-text">{{ $help }}</div>
     @endif
 </div>
