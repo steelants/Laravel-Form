@@ -8,7 +8,7 @@
         method="{{ in_array($method, ['POST', 'GET']) ? $method : 'POST' }}"
     @endif
 >
-    @if(isset($action))
+    @if(isset($method))
         @csrf
     @endif
 
