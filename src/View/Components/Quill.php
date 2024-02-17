@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use SteelAnts\Form\FromNameKeyTrait;
 
-class Textarea extends Component
+class Quill extends Component
 {
 
     use FromNameKeyTrait;
@@ -22,7 +22,7 @@ class Textarea extends Component
         public ?string $groupClass = null,
         public ?string $help = null,
     ) {
-
+        
     }
 
     /**
@@ -30,6 +30,6 @@ class Textarea extends Component
      */
     public function render(): View|Closure|string
     {
-        return 'form::components.textarea';
+        return 'form::components.quill';
     }
 }

@@ -9,13 +9,13 @@
 
     <textarea 
         @isset($id) id="{{ $id }}" @endisset
-        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($getErrorKey())]) }}
+        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($getNameKey())]) }}
         @isset($name) 
             name="{{ $name }}" 
         @endisset
     >{{ isset($name) ? old($name, $value) : ''}}</textarea>
 
-    @error($getErrorKey())
+    @error($getNameKey())
         <div class="invalid-feedback" role="alert">{{ $message }}</div>
     @enderror
 

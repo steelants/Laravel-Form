@@ -9,7 +9,7 @@
 
     <select 
         @isset($id) id="{{ $id }}" @endisset
-        {{ $attributes->class(['form-select', 'is-invalid' => $errors->has($getErrorKey())]) }}
+        {{ $attributes->class(['form-select', 'is-invalid' => $errors->has($getNameKey())]) }}
         @isset($name) 
             name="{{ $name }}" 
         @endisset
@@ -23,7 +23,7 @@
         @endforeach
     </select>
 
-    @error($getErrorKey())
+    @error($getNameKey())
         <div class="invalid-feedback" role="alert">{{ $message }}</div>
     @enderror
 
