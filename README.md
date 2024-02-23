@@ -83,6 +83,21 @@ Attributes:
 <x-form::textarea wire:model="textarea"/>
 ```
 
+### Quill
+```
+<x-form::quill
+    group-class="mb-3"
+    label="Quill"
+    name="quill"
+    value="This is init value from html"
+/>
+<x-form::quill 
+    group-class="mb-3"
+    label="Quill" 
+    wire:model="quill" 
+/>
+```
+
 ### Button
 ```
 <x-form::button class="btn-primary" type="submit">submit</x-form::button>
@@ -94,7 +109,7 @@ Attributes:
 - Values are inserted with `old()`
 - All attributes are passed down to input/select/texarea element. 
 
-## Quill editor
+## Quill editor requirements
 Include following JS and CSS
 ```html
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
