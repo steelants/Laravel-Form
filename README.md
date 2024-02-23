@@ -84,7 +84,7 @@ Attributes:
 ```
 
 ### Quill
-```
+```blade
 <x-form::quill
     group-class="mb-3"
     label="Quill"
@@ -99,7 +99,7 @@ Attributes:
 ```
 
 ### Button
-```
+```blade
 <x-form::button class="btn-primary" type="submit">submit</x-form::button>
 ```
 
