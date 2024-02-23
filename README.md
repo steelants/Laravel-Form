@@ -168,5 +168,5 @@ window.loadQuill = function(){
 window.loadQuill();
 ```
 
-## Summernote support
+## Summernote support (deprecated, use quill)
 Include JS and CSS files from [Summernote github](https://github.com/summernote/summernote/)
