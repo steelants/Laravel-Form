@@ -84,7 +84,7 @@ Attributes:
 ```
 
 ### Button
-```
+```blade
 <x-form::button class="btn-primary" type="submit">submit</x-form::button>
 ```
 
