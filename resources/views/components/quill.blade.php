@@ -7,17 +7,21 @@
         </label>
     @endif
 
-    <div style="/*display: none;*/">
+    <div class="quill-editor-wrap">
         <textarea 
             @isset($id) id="{{ $id }}" @endisset
             {{ $attributes->class(['quill-textarea','is-invalid' => $errors->has($getNameKey())]) }}
             @isset($name) 
                 name="{{ $name }}" 
             @endisset
-        >{{ isset($name) ? old($name, $value) : ''}}</textarea>
+        >{{ $isLivewire() ? $this->{$getNameKey()} : (isset($name) ? old($name, $value) : '')}}</textarea>
+
+        <div class="quill-editor {{$isLivewire() ? 'quill-livewire' : ''}}"></div>
+        <div class="quill-loading">
+            <div class="spinner-border text-secondary" role="status"></div>
+        </div>
     </div>
 
-    <div class="quill-editor">{{ isset($name) ? old($name, $value) : ''}}</div>
 
     @error($getNameKey())
         <div class="invalid-feedback" role="alert">{{ $message }}</div>
@@ -27,21 +31,11 @@
         <div class="form-text">{{ $help }}</div>
     @endif
 
-    <script>
-        let quillE = new Quill('.quill-editor', {
-            theme: 'snow'
-        });
-
-        document.querySelector('.quill-textarea').addEventListener("component.init", (event) => {
-            console.log(event.target.value);
-        });
-
-        quillE.on('text-change', function () {
-            let value = quillE.root.innerHTML;
-            console.log(value);
-            let textarea = quillE.root.closest('.quill-container').querySelector('.quill-textarea');
-            textarea.value = value;
-            textarea.dispatchEvent(new Event('input'));
-        });
-    </script>
+    @if($isLivewire())
+        @script
+            <script>
+                loadQuill();
+            </script>
+        @endscript
+    @endif
 </div>
