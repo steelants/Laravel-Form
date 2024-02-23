@@ -43,6 +43,8 @@ Attributes:
 - label - Input label (optional) 
 - help - Help text
 - group-class - Class of wrapping element
+- value - value
+
 ```blade
 <x-form::input group-class="mb-3" type="text" name="test" id="xxxx" label="Basic input" placeholder="This is placeholder" help="Help text is here"/>
 
@@ -58,6 +60,8 @@ Attributes:
 - options - Array of values
 - value - Selected value (for non-livewire use)
 - placeholder - Placeholder (hidden option withou value)
+- value - value
+
 ```blade
 @php
     $options = [
@@ -79,11 +83,18 @@ Attributes:
 - label - Input label (optional) 
 - help - Help text
 - group-class - Class of wrapping element
+- value - value
+
 ```blade
 <x-form::textarea wire:model="textarea"/>
 ```
 
 ### Quill
+- name - Input name (required for non-livewire use)
+- label - Input label (optional) 
+- help - Help text
+- group-class - Class of wrapping element
+
 ```blade
 <x-form::quill
     group-class="mb-3"
