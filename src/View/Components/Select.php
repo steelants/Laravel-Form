@@ -5,11 +5,11 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use SteelAnts\Form\FromErrorKeyTrait;
+use SteelAnts\Form\FromNameKeyTrait;
 
 class Select extends Component
 {
-    use FromErrorKeyTrait;
+    use FromNameKeyTrait;
 
     /**
      * Create a new component instance.

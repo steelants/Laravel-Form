@@ -43,6 +43,8 @@ Attributes:
 - label - Input label (optional) 
 - help - Help text
 - group-class - Class of wrapping element
+- value - value
+
 ```blade
 <x-form::input group-class="mb-3" type="text" name="test" id="xxxx" label="Basic input" placeholder="This is placeholder" help="Help text is here"/>
 
@@ -58,6 +60,8 @@ Attributes:
 - options - Array of values
 - value - Selected value (for non-livewire use)
 - placeholder - Placeholder (hidden option withou value)
+- value - value
+
 ```blade
 @php
     $options = [
@@ -79,8 +83,30 @@ Attributes:
 - label - Input label (optional) 
 - help - Help text
 - group-class - Class of wrapping element
+- value - value
+
 ```blade
 <x-form::textarea wire:model="textarea"/>
+```
+
+### Quill
+- name - Input name (required for non-livewire use)
+- label - Input label (optional) 
+- help - Help text
+- group-class - Class of wrapping element
+
+```blade
+<x-form::quill
+    group-class="mb-3"
+    label="Quill"
+    name="quill"
+    value="This is init value from html"
+/>
+<x-form::quill 
+    group-class="mb-3"
+    label="Quill" 
+    wire:model="quill" 
+/>
 ```
 
 ### Button
@@ -94,5 +120,76 @@ Attributes:
 - Values are inserted with `old()`
 - All attributes are passed down to input/select/texarea element. 
 
-## Summernote support
-Include JS and CSS files from [Summernote github](https://github.com/summernote/summernote/)
+## Quill editor requirements (OUTDATED)
+Include following JS and CSS
+```html
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.snow.css" rel="stylesheet">
+```
+
+```css
+.quill-editor-wrap{
+    position: relative;
+    min-height: 9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.quill-editor-wrap textarea{
+    display: none;
+}
+
+.quill-editor{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.quill-editor .ql-editor{
+    flex-grow: 1;
+}
+
+.quill-loading{
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: var(--bs-border-radius);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+.quill-editor.ready + .quill-loading{
+    display: none;
+}
+```
+
+```js
+window.loadQuill = function(){
+    document.querySelectorAll('.quill-editor:not(.ready)').forEach(function(element){
+        let textarea = element.closest('.quill-container').querySelector('.quill-textarea');
+
+        let quill = new Quill(element, {
+            theme: 'snow'
+        });
+
+        quill.root.innerHTML = textarea.value;
+
+        quill.on('text-change', function () {
+            let value = quill.root.innerHTML;
+            textarea.value = value;
+            textarea.dispatchEvent(new Event('input'));
+        });
+
+        element.classList.add('ready');
+        element.closest('.quill-container').querySelector('.quill-loading').remove();
+    });
+}
+window.loadQuill();
+```
