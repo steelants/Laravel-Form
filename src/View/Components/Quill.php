@@ -5,7 +5,7 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use SteelAnts\Form\FromNameKeyTrait;
+use SteelAnts\Form\Traits\FromNameKeyTrait;
 
 class Quill extends Component
 {
