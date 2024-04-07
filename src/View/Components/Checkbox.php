@@ -6,9 +6,8 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use SteelAnts\Form\Traits\FromNameKeyTrait;
-use Exception;
 
-class Input extends Component
+class Checkbox extends Component
 {
     use FromNameKeyTrait;
 
@@ -16,14 +15,14 @@ class Input extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public ?string $type = 'text',
         public ?string $name = null,
         public ?string $label = null,
-        public mixed $value = null,
+        public mixed $value = 1,
+        public bool $checked = false,
         public ?string $groupClass = null,
         public ?string $help = null,
     ) {
-        if($type == 'checkbox') throw new Exception('Invalid input type');
+
     }
 
     /**
@@ -31,6 +30,6 @@ class Input extends Component
      */
     public function render(): View|Closure|string
     {
-        return 'form::components.input';
+        return 'form::components.checkbox';
     }
 }
