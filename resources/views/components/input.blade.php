@@ -8,6 +8,7 @@
     @endif
 
     <input 
+        type="{{ $type }}" 
         @isset($id) id="{{ $id }}" @endisset
         {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($getNameKey())]) }}
         @isset($name) 
