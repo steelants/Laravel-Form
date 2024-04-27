@@ -15,7 +15,7 @@
         @endisset
     >
         @if (!empty($placeholder))
-            <option hidden>{{ $placeholder }}</option>
+            <option value="" hidden>{{ $placeholder }}</option>
         @endif
         
         @foreach ($options as $val => $opt)
