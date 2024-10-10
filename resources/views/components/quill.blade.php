@@ -6,6 +6,15 @@
             {{ $label }} [{{$getNameKey()}}]
         </label>
     @endif
+    @php
+    if ($isLivewire()){
+        $propertyPath = explode(".", $getNameKey());
+        $variable = $propertyPath[0];
+        if (count($propertyPath) > 1){
+            $arrayKey = $propertyPath[1];
+        }
+    }
+    @endphp
 
     <div class="quill-editor-wrap">
         <textarea 
@@ -14,7 +23,7 @@
             @isset($name) 
                 name="{{ $name }}" 
             @endisset
-        >{{ $isLivewire() ? $this->{$getNameKey()} : (isset($name) ? old($name, $value) : '')}}</textarea>
+        >{{ $isLivewire() ? (!is_array($this->{$variable}) ? $this->{$variable} : $this->{$variable}[$arrayKey]) : (isset($name) ? old($name, $value) : '')}}</textarea>
 
         <div class="quill-editor {{$isLivewire() ? 'quill-livewire' : ''}}"></div>
         <div class="quill-loading">
