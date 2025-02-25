@@ -136,10 +136,48 @@ Attributes:
 - Values are inserted with `old()`
 - All attributes are passed down to input/select/texarea element. 
 
+## Development
+
+1. Create subfolder `/packages` at root of your laravel project
+
+2. clone repository to sub folder `/packages` (you need to be positioned at root of your laravel project in your terminal)
+```bash
+git clone https://github.com/steelants/Laravel-Form.git ./packages/Laravel-Form
+```
+
+3. edit composer.json file
+```json
+"autoload": {
+	"psr-4": {
+		"SteelAnts\\Form\\": "packages/Laravel-Form/src/",
+	}
+}
+```
+
+4. Add provider to `bootstrap/providers.php`
+```php
+return [
+	...
+    SteelAnts\Form\FormServiceProvider ::class,
+	...
+];
+```
+
+## Contributors
+<a href="https://github.com/steelants/Laravel-Form/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=steelants/Laravel-Form" />
+</a>
+
+
 ## Other Packages
 [steelants/laravel-auth](https://github.com/steelants/laravel-auth)
+
 [steelants/laravel-boilerplate](https://github.com/steelants/Laravel-Boilerplate)
+
 [steelants/datatable](https://github.com/steelants/Livewire-DataTable)
+
 [steelants/form](https://github.com/steelants/Laravel-Form)
+
 [steelants/modal](https://github.com/steelants/Livewire-Modal)
+
 [steelants/laravel-tenant](https://github.com/steelants/Laravel-Tenant)
