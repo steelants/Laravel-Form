@@ -5,12 +5,13 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use SteelAnts\Form\Traits\FromNameKeyTrait;
+use Illuminate\Support\Str;
+use Livewire\Attributes\Locked;
 
 class Quill extends Component
 {
-
-    use FromNameKeyTrait;
+    #[Locked]
+    public $key;
 
     /**
      * Create a new component instance.
@@ -22,7 +23,7 @@ class Quill extends Component
         public ?string $groupClass = null,
         public ?string $help = null,
     ) {
-        
+        $this->key = 'quill-'.Str::random();
     }
 
     /**
