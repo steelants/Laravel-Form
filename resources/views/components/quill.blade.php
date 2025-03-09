@@ -11,7 +11,7 @@
     }
 @endphp
 
-<div wire:ignore class="quill-container {{ $groupClass }}">
+<div class="quill-container {{ $groupClass }} {{ $errors->has($wireModel) ? 'is-invalid' : '' }}">
     @if (!empty($label))
         <label class="form-label"
             @isset($id) for="{{ $id }}" id="{{ $id }}-label" @endisset
@@ -20,10 +20,10 @@
         </label>
     @endif
 
-    <div class="quill-editor-wrap">
+    <div wire:ignore class="quill-editor-wrap">
         <textarea
             @isset($id) id="{{ $id }}" @endisset
-            {{ $attributes->class(['quill-textarea','is-invalid' => $errors->has($nameKey)]) }}
+            {{ $attributes->class(['quill-textarea']) }}
             @isset($name)
                 name="{{ $name }}"
             @endisset
@@ -37,7 +37,7 @@
 
 
     @error($nameKey)
-        <div class="invalid-feedback" role="alert">{{ $message }}</div>
+        <div class="invalid-feedback d-block" role="alert">{{ $message }}</div>
     @enderror
 
     @if (isset($help) && !empty($help))
