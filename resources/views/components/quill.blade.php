@@ -1,9 +1,9 @@
 <div wire:ignore class="quill-container {{ $groupClass }}">
     @if (!empty($label))
-        <label class="form-label" 
+        <label class="form-label"
             @isset($id) for="{{ $id }}" id="{{ $id }}-label" @endisset
         >
-            {{ $label }} [{{$getNameKey()}}]
+            {{ $label }}
         </label>
     @endif
     @php
@@ -17,11 +17,11 @@
     @endphp
 
     <div class="quill-editor-wrap">
-        <textarea 
+        <textarea
             @isset($id) id="{{ $id }}" @endisset
             {{ $attributes->class(['quill-textarea','is-invalid' => $errors->has($getNameKey())]) }}
-            @isset($name) 
-                name="{{ $name }}" 
+            @isset($name)
+                name="{{ $name }}"
             @endisset
         >{{ $isLivewire() ? (!is_array($this->{$variable}) ? $this->{$variable} : $this->{$variable}[$arrayKey]) : (isset($name) ? old($name, $value) : '')}}</textarea>
 
