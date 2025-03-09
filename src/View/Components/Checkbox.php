@@ -5,12 +5,9 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use SteelAnts\Form\Traits\FromNameKeyTrait;
 
 class Checkbox extends Component
 {
-    use FromNameKeyTrait;
-
     /**
      * Create a new component instance.
      */
