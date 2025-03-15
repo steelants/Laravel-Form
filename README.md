@@ -110,6 +110,8 @@ Attributes:
 - label - Input label (optional) 
 - help - Help text
 - group-class - Class of wrapping element
+- mentions - Users for @ mentions. (see quill-mention package for more info)
+- tags - Hashtags (see quill-mention package for more info)
 
 ```blade
 <x-form::quill
@@ -117,6 +119,8 @@ Attributes:
     label="Quill"
     name="quill"
     value="This is init value from html"
+    :mentions="[{id: 1, value: 'SteelAnts'}]"
+    :tags="[{id: 1, value: 'Laravel'}]"
 />
 <x-form::quill 
     group-class="mb-3"
