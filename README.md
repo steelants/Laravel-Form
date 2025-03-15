@@ -11,7 +11,7 @@ Livewire compatible form elements. Styled with Bootstrap 5.
 ## Installation
 
 ```bash
-pnpm i quill quill-table-ui
+npm|pnpm|bun i quill quill-table-ui quill-mention
 ```
 
 ### Include scripts

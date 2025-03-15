@@ -7,6 +7,10 @@ Quill.register({
     'modules/tableUI': quillTableUI.default
 }, true);
 
+import { Mention, MentionBlot } from "quill-mention";
+
+Quill.register({ "blots/mention": MentionBlot, "modules/mention": Mention });
+
 // Quill.register(Quill.import('attributors/attribute/direction'), true);
 // Quill.register(Quill.import('attributors/class/align'), true);
 // Quill.register(Quill.import('attributors/class/background'), true);
@@ -21,57 +25,88 @@ Quill.register(Quill.import('attributors/style/direction'), true);
 Quill.register(Quill.import('attributors/style/font'), true);
 Quill.register(Quill.import('attributors/style/size'), true);
 
-window.loadQuill = function(){
-    document.querySelectorAll('.quill-editor:not(.ready)').forEach(function(element){
-        let container = element.closest('.quill-container');
-        let textarea = container.querySelector('.quill-textarea');
+window.loadQuill = function (element, $wire = null, mentions = [], tags = []) {
+    let container = element.closest('.quill-container');
+    let textarea = container.querySelector('.quill-textarea');
 
-        const toolbarOptions = [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike'],
-            ['blockquote', 'code-block'],
-            ['link', 'image'],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-            ['table'],
-            ['clean'],
-        ];
+    const toolbarOptions = [
+        [{ header: [1, 2, 3, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        ['link', 'image'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'list': 'check' }],
+        ['table'],
+        ['clean'],
+    ];
 
-        let quill = new Quill(element, {
-            theme: 'snow',
-            modules: {
-                table: true,
-                tableUI: true,
-                toolbar: {
-                    container: toolbarOptions,
-                    handlers: {
-                        table: function() {
-                            this.quill.getModule('table').insertTable(3, 3);
-                        }
+    let quill = new Quill(element, {
+        theme: 'snow',
+        modules: {
+            table: true,
+            tableUI: true,
+            toolbar: {
+                container: toolbarOptions,
+                handlers: {
+                    table: function () {
+                        this.quill.getModule('table').insertTable(3, 3);
                     }
-                },
-                clipboard: {
-                    matchVisual: false
+                }
+            },
+            clipboard: {
+                matchVisual: false
+            },
+            mention: {
+                allowedChars: /^[A-Za-z\sÅÄÖåäö]*$/,
+                mentionDenotationChars: ["@", "#"],
+                source: function (searchTerm, renderList, mentionChar) {
+                    let values;
+
+                    if (mentionChar === "@") {
+                        values = mentions;
+                    } else {
+                        values = tags;
+                    }
+
+                    if (searchTerm.length === 0) {
+                        renderList(values, searchTerm);
+                    } else {
+                        const matches = [];
+                        for (let i = 0; i < values.length; i++) {
+                            if (~values[i].value.toLowerCase().indexOf(searchTerm.toLowerCase())) {
+                                matches.push(values[i]);
+                            }
+                        }
+                        renderList(matches, searchTerm);
+                    }
                 }
             }
-        });
-
-        // let table = quill.getModule('table')
-        // container.querySelector('.ql-insert-table').addEventListener('click', function(){
-        //     console.log('click');
-        //     table.insertTable(2, 2);
-        // });
-
-        quill.root.innerHTML = textarea.value;
-
-        quill.on('text-change', function () {
-            let value = quill.root.innerHTML;
-            textarea.value = value;
-            textarea.dispatchEvent(new Event('input'));
-            console.log(quill.getContents());
-        });
-
-        element.classList.add('ready');
-        container.querySelector('.quill-loading').remove();
+        }
     });
+
+    // let table = quill.getModule('table')
+    // container.querySelector('.ql-insert-table').addEventListener('click', function(){
+    //     console.log('click');
+    //     table.insertTable(2, 2);
+    // });
+
+    quill.root.innerHTML = textarea.value;
+
+    quill.on('text-change', function (delta, oldDelta, source) {
+        let value = quill.root.innerHTML;
+        textarea.value = value;
+        textarea.dispatchEvent(new Event('input'));
+    });
+
+    textarea.addEventListener('change', function () {
+        quill.root.innerHTML = textarea.value;
+    });
+
+    if ($wire) {
+        $wire.hook('morphed', function () {
+            quill.root.innerHTML = textarea.value;
+        });
+    }
+
+    element.classList.add('ready');
+    container.querySelector('.quill-loading').remove();
 }
-window.loadQuill();

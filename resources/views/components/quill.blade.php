@@ -29,7 +29,7 @@
             @endisset
         >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : $this->{$variable}[$arrayKey]) : (isset($name) ? old($name, $value) : '')}}</textarea>
 
-        <div id="{{ $key }}" class="quill-editor {{$wireModel ? 'quill-livewire' : ''}}"></div>
+        <div id="{{ $key }}" class="quill-editor"></div>
         <div class="quill-loading">
             <div class="spinner-border text-secondary" role="status"></div>
         </div>
@@ -46,11 +46,17 @@
 
 </div>
 
-@if($wireModel)
+@if($wireModel || is_subclass_of(static::class, \Livewire\Component::class))
     @script
         <script>
-            loadQuill(document.getElementById('{{$key}}'), $wire);
+            loadQuill(document.getElementById('{{$key}}'), $wire, @js($mentions), @js($tags));
         </script>
     @endscript
+@else
+    @push('scripts')
+        <script type="module">
+            loadQuill(document.getElementById('{{$key}}'), null, @js($mentions), @js($tags));
+        </script>
+    @endpush
 @endif
 

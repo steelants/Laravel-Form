@@ -22,6 +22,8 @@ class Quill extends Component
         public mixed $value = null,
         public ?string $groupClass = null,
         public ?string $help = null,
+        public array $mentions = [],
+        public array $tags = [],
     ) {
         $this->key = 'quill-'.Str::random();
     }
