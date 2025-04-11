@@ -2,14 +2,15 @@ import Quill from 'quill';
 window.Quill = Quill;
 
 import * as quillTableUI from 'quill-table-ui'
+import MagicUrl from 'quill-magic-url'
+import { Mention, MentionBlot } from "quill-mention";
 
 Quill.register({
     'modules/tableUI': quillTableUI.default
 }, true);
 
-import { Mention, MentionBlot } from "quill-mention";
-
 Quill.register({ "blots/mention": MentionBlot, "modules/mention": Mention });
+Quill.register('modules/magicUrl', MagicUrl);
 
 // Quill.register(Quill.import('attributors/attribute/direction'), true);
 // Quill.register(Quill.import('attributors/class/align'), true);
@@ -79,7 +80,8 @@ window.loadQuill = function (element, $wire = null, mentions = [], tags = []) {
                         renderList(matches, searchTerm);
                     }
                 }
-            }
+            },
+            magicUrl: true,
         }
     });
 
