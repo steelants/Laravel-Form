@@ -6,9 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Exception;
+use Livewire\Attributes\Locked;
+use Illuminate\Support\Str;
 
 class Input extends Component
 {
+    #[Locked]
+    public $key;
+
     /**
      * Create a new component instance.
      */
@@ -19,8 +24,11 @@ class Input extends Component
         public mixed $value = null,
         public ?string $groupClass = null,
         public ?string $help = null,
+        public ?array $datalist = null,
     ) {
         if($type == 'checkbox') throw new Exception('Invalid input type');
+
+        $this->key = 'input-'.Str::random();
     }
 
     /**
