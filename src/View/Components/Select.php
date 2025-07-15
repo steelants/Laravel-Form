@@ -5,6 +5,7 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Str;
 
 class Select extends Component
 {
@@ -19,8 +20,9 @@ class Select extends Component
         public ?string $groupClass = null,
         public ?string $help = null,
         public ?string $placeholder = null,
+        public ?string $id = null,
     ) {
-
+        $this->id ??= Str::uuid();
     }
 
     /**

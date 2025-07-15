@@ -5,6 +5,7 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Str;
 
 class Textarea extends Component
 {
@@ -17,8 +18,9 @@ class Textarea extends Component
         public mixed $value = null,
         public ?string $groupClass = null,
         public ?string $help = null,
+        public ?string $id = null,
     ) {
-
+        $this->id ??= Str::uuid();
     }
 
     /**

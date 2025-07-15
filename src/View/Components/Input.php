@@ -25,10 +25,12 @@ class Input extends Component
         public ?string $groupClass = null,
         public ?string $help = null,
         public ?array $datalist = null,
+        public ?string $id = null,
     ) {
         if($type == 'checkbox') throw new Exception('Invalid input type');
 
         $this->key = 'input-'.Str::random();
+        $this->id ??= Str::uuid();
     }
 
     /**

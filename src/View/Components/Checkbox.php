@@ -18,8 +18,9 @@ class Checkbox extends Component
         public bool $checked = false,
         public ?string $groupClass = null,
         public ?string $help = null,
+        public ?string $id = null,
     ) {
-
+        $this->id ??= Str::uuid();
     }
 
     /**

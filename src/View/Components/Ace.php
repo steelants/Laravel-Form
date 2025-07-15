@@ -24,8 +24,10 @@ class Ace extends Component
         public ?string $help = null,
         public string $language = 'html',
         public ?string $theme = 'terminal',
+        public ?string $id = null,
     ) {
         $this->key = 'ace-'.Str::random();
+        $this->id ??= Str::uuid();
     }
 
     /**

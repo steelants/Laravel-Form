@@ -16,7 +16,7 @@
         >
         @if (!empty($label))
             <span class="form-check-label"
-                @isset($id) for="{{ $id }}" id="{{ $id }}-label" @endisset
+                @isset($id) id="{{ $id }}-label" @endisset
             >
                 {{ $label }}
             </span>
