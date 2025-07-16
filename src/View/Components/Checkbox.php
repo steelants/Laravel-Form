@@ -5,6 +5,7 @@ namespace SteelAnts\Form\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Str;
 
 class Checkbox extends Component
 {
