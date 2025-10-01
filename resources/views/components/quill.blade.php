@@ -20,16 +20,25 @@
         </label>
     @endif
 
-    <div wire:ignore class="quill-editor-wrap">
+    <div
+        wire:ignore
+        class="quill-editor-wrap"
+        @if($wireModel || is_subclass_of(static::class, \Livewire\Component::class))
+            x-data="loadQuill({ wire: $wire, mentions: @js($mentions), tags: @js($tags) })"
+        @else
+            x-data="loadQuill({ mentions: @js($mentions), tags: @js($tags) })"
+        @endif
+    >
         <textarea
             @isset($id) id="{{ $id }}" @endisset
             {{ $attributes->class(['quill-textarea']) }}
             @isset($name)
                 name="{{ $name }}"
             @endisset
+            x-ref="textarea"
         >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : $this->{$variable}[$arrayKey]) : (isset($name) ? old($name, $value) : '')}}</textarea>
 
-        <div id="{{ $key }}" class="quill-editor"></div>
+        <div id="{{ $key }}" class="quill-editor" x-ref="editor"></div>
         <div class="quill-loading">
             <div class="spinner-border text-secondary" role="status"></div>
         </div>
@@ -45,18 +54,3 @@
     @endif
 
 </div>
-
-@if($wireModel || is_subclass_of(static::class, \Livewire\Component::class))
-    @script
-        <script>
-            loadQuill(document.getElementById('{{$key}}'), $wire, @js($mentions), @js($tags));
-        </script>
-    @endscript
-@else
-    @push('scripts')
-        <script type="module">
-            loadQuill(document.getElementById('{{$key}}'), null, @js($mentions), @js($tags));
-        </script>
-    @endpush
-@endif
-
