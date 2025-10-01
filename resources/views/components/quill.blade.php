@@ -3,11 +3,7 @@
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     if ($wireModel){
-        $propertyPath = explode(".", $wireModel);
-        $variable = $propertyPath[0];
-        if (count($propertyPath) > 1){
-            $arrayKey = $propertyPath[1];
-        }
+        list($variable, $arrayKey) = explode('.', $wireModel, 2);
     }
 @endphp
 
@@ -36,7 +32,7 @@
                 name="{{ $name }}"
             @endisset
             x-ref="textarea"
-        >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : $this->{$variable}[$arrayKey]) : (isset($name) ? old($name, $value) : '')}}</textarea>
+        >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : Illuminate\Support\Arr::get($this->{$variable}, $arrayKey)) : (isset($name) ? old($name, $value) : '')}}</textarea>
 
         <div id="{{ $key }}" class="quill-editor" x-ref="editor"></div>
         <div class="quill-loading">
