@@ -12,6 +12,8 @@ window.loadAce = function($wire = null, language, theme){
                 maxLines: 30,
             });
 
+            this.ace = editor;
+
             editor.session.setValue(textareaEl.value);
 
             editor.session.on('change', function(delta) {
