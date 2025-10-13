@@ -26,7 +26,7 @@ class Input extends Component
         public ?string $help = null,
         public ?array $datalist = null,
     ) {
-        if($type == 'checkbox') throw new Exception('Invalid input type');
+        if($type == 'checkbox') throw new Exception(__('Invalid input type'));
 
         $this->key = 'input-'.Str::random();
     }
