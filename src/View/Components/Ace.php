@@ -35,6 +35,16 @@ class Ace extends Component
      */
     public function render(): View|Closure|string
     {
-        return 'form::components.ace';
+        return function (array $data) {
+            $attributes = $data['attributes'];
+
+            $data['nameKey'] = $data['attributes']->whereStartsWith('wire:model')->first() ?? $name ?? '';
+
+            $data['wireModel'] = $data['attributes']->whereStartsWith('wire:model')->first();
+            if ($data['wireModel']){
+                list($data['variable'], $data['arrayKey']) = array_pad(explode('.', $data['wireModel'], 2), 2, null);
+            }
+            return view('form::components.ace', $data)->render();
+        };
     }
 }

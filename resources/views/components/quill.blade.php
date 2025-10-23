@@ -1,12 +1,3 @@
-@php
-    $nameKey = $attributes->whereStartsWith('wire:model')->first() ?? $name ?? '';
-
-    $wireModel = $attributes->whereStartsWith('wire:model')->first();
-    if ($wireModel){
-        list($variable, $arrayKey) = array_pad(explode('.', $wireModel, 2), 2, null);
-    }
-@endphp
-
 <div class="quill-container {{ $groupClass }} {{ $errors->has($wireModel) ? 'is-invalid' : '' }}">
     @if (!empty($label))
         <label class="form-label"
