@@ -3,7 +3,7 @@
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     if ($wireModel){
-        list($variable, $arrayKey) = explode('.', $wireModel, 2);
+        list($variable, $arrayKey) = array_pad(explode('.', $wireModel, 2), 2, null);
     }
 @endphp
 
