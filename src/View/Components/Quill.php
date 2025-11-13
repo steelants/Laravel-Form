@@ -24,8 +24,10 @@ class Quill extends Component
         public ?string $help = null,
         public array $mentions = [],
         public array $tags = [],
+        public ?string $id = null,
     ) {
         $this->key = 'quill-'.Str::random();
+        $this->id ??= Str::uuid();
     }
 
     /**
