@@ -25,6 +25,9 @@ app.scss
 import "./quill";
 ```
 
+### Requirements
+- AlpineJS
+
 ## Examples
 
 ### Form
