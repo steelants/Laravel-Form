@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Illuminate\Support\Str;
 
-class InputPhone extends Component
+class Phone extends Component
 {
     public function __construct(
         public $name = null,
