@@ -65,14 +65,14 @@
         >
     @endif
 
-    <div class="input-group">
+    <div class="input-group {{ $errors->has($nameKey) ? 'is-invalid' : '' }}">
         <select class="form-select flex-grow-0 flex-shrik-0 w-22" x-model="preselection" x-on:change="updateInput()">
             @foreach($preselections as $val)
                 <option value="{{ $val }}">{{ $val }}</option>
             @endforeach
         </select>
         <input
-            type="text"
+            type="tel"
             class="form-control {{ $errors->has($nameKey) ? 'is-invalid' : '' }}"
             x-model="inputValue" x-on:input="updateInput()"
         >
