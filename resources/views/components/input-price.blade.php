@@ -34,7 +34,7 @@
             ? this.inputValue / (1 + this.vatRate)
             : this.inputValue
         );
-        this.priceWithout = Number.isFinite(value) ? value.toFixed(this.decimals) : 0;
+        this.priceWithout = Number.isFinite(value) ? value.toFixed({{ $realDecimals }}) : 0;
     },
     get withoutVat() {
         const value = parseFloat(this.priceWithout);

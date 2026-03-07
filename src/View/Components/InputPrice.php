@@ -23,13 +23,14 @@ class InputPrice extends Component
         public $id = null,
         public int $vat = 21,
         public string $currency = 'Kč',
-        public int $decimals = 6,
+        public int $decimals = 2, // display precision
+        public int $realDecimals = 6, // database precision
         public string $mode = 'with',
     ) {
         $this->id ??= Str::uuid();
 
-        if ($decimals) {
-            $this->step = '.' . str_repeat('0', $decimals - 1) . '1';
+        if ($realDecimals) {
+            $this->step = '.' . str_repeat('0', $realDecimals - 1) . '1';
         }
     }
 
