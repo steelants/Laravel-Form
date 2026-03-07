@@ -22,16 +22,16 @@
     @endif
     updateInput() {
         const value = parseFloat(
-            this.mode === 'with' 
-            ? (this.priceWithout * (1 + this.vatRate)) 
+            this.mode === 'with'
+            ? (this.priceWithout * (1 + this.vatRate))
             : this.priceWithout
         );
         this.inputValue = Number.isFinite(value) ? value.toFixed(this.decimals) : 0;
     },
     updateWithout() {
         const value = parseFloat(
-            this.mode === 'with' 
-            ? this.inputValue / (1 + this.vatRate) 
+            this.mode === 'with'
+            ? this.inputValue / (1 + this.vatRate)
             : this.inputValue
         );
         this.priceWithout = Number.isFinite(value) ? value.toFixed(this.decimals) : 0;
@@ -47,7 +47,7 @@
     get vatRate() {
         return (this.vatPercent ?? 0) / 100;
     },
-    mode: 'with',
+    mode: @js($mode),
 }" x-init="updateInput(); $watch('vatPercent', () => updateInput())">
     @if (!empty($label))
         <label class="form-label"
@@ -58,7 +58,7 @@
     @endif
 
     @if(!$wireModel)
-        <input 
+        <input
             type="text"
             name="{{ $name }}"
             x-model="priceWithout"

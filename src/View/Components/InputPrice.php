@@ -24,6 +24,7 @@ class InputPrice extends Component
         public int $vat = 21,
         public string $currency = 'Kč',
         public int $decimals = 6,
+        public string $mode = 'with',
     ) {
         $this->id ??= Str::uuid();
 
