@@ -1,3 +1,4 @@
+@use(Illuminate\Support\Arr)
 @php
     $nameKey = $attributes->whereStartsWith('wire:model')->first() ?? $name ?? '';
 
@@ -36,7 +37,7 @@
                 name="{{ $name }}"
             @endisset
             x-ref="textarea"
-        >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : Illuminate\Support\Arr::get($this->{$variable}, $arrayKey)) : (isset($name) ? old($errorKey, $value) : '')}}</textarea>
+        >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : Arr::get($this->{$variable}, $arrayKey)) : (isset($name) ? old($errorKey, $value) : '')}}</textarea>
 
         <div id="{{ $key }}" class="quill-editor" x-ref="editor"></div>
         <div class="quill-loading">
