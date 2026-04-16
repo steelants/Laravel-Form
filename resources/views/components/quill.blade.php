@@ -5,9 +5,13 @@
     if ($wireModel){
         list($variable, $arrayKey) = array_pad(explode('.', $wireModel, 2), 2, null);
     }
+
+    // Convert bracket notation (foo[1][2]) to dot notation (foo.1.2) for $errors->has()
+    $errorKey = preg_replace('/\[([^\]]*)\]/', '.$1', $nameKey);
+    $errorKey = rtrim($errorKey, '.');
 @endphp
 
-<div class="quill-container {{ $groupClass }} {{ $errors->has($wireModel) ? 'is-invalid' : '' }}">
+<div class="quill-container {{ $groupClass }} {{ $errors->has($errorKey) ? 'is-invalid' : '' }}">
     @if (!empty($label))
         <label class="form-label"
             @isset($id) for="{{ $id }}" id="{{ $id }}-label" @endisset
@@ -32,7 +36,7 @@
                 name="{{ $name }}"
             @endisset
             x-ref="textarea"
-        >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : Illuminate\Support\Arr::get($this->{$variable}, $arrayKey)) : (isset($name) ? old($name, $value) : '')}}</textarea>
+        >{{ $wireModel ? (!is_array($this->{$variable}) ? $this->{$variable} : Illuminate\Support\Arr::get($this->{$variable}, $arrayKey)) : (isset($name) ? old($errorKey, $value) : '')}}</textarea>
 
         <div id="{{ $key }}" class="quill-editor" x-ref="editor"></div>
         <div class="quill-loading">
@@ -41,7 +45,7 @@
     </div>
 
 
-    @error($nameKey)
+    @error($errorKey)
         <div class="invalid-feedback d-block" role="alert">{{ $message }}</div>
     @enderror
 
