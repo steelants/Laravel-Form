@@ -73,7 +73,7 @@
             x-model="inputValue" x-on:input="updateWithout()"
         >
         <div class="input-group-text bg-body ps-0 {{ $errors->has($nameKey) ? 'border-danger' : '' }}">{{ $currency }}</div>
-        <select class="form-select flex-grow-0 w-26 {{ $errors->has($nameKey) ? 'is-invalid' : '' }}" x-model="mode" x-on:change="updateInput()">
+        <select class="form-select flex-grow-0 w-26 {{ $errors->has($nameKey) ? 'border-danger' : '' }}" x-model="mode" x-on:change="updateInput()">
             <option value="with">{{ __('s DPH') }}</option>
             <option value="without">{{ __('bez DPH') }}</option>
         </select>
