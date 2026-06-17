@@ -72,12 +72,16 @@
             class="form-control border-end-0 pe-0 {{ $errors->has($nameKey) ? 'is-invalid' : '' }}"
             x-model="inputValue" x-on:input="updateWithout()"
         >
-        <div class="input-group-text bg-body ps-0">{{ $currency }}</div>
-        <select class="form-select flex-grow-0 w-26" x-model="mode" x-on:change="updateInput()">
+        <div class="input-group-text bg-body ps-0 {{ $errors->has($nameKey) ? 'border-danger' : '' }}">{{ $currency }}</div>
+        <select class="form-select flex-grow-0 w-26 {{ $errors->has($nameKey) ? 'is-invalid' : '' }}" x-model="mode" x-on:change="updateInput()">
             <option value="with">{{ __('s DPH') }}</option>
             <option value="without">{{ __('bez DPH') }}</option>
         </select>
     </div>
+
+    @error($nameKey)
+        <div class="invalid-feedback d-block" role="alert">{{ $message }}</div>
+    @enderror
 
     <div class="form-text">
         <template x-if="mode=='without'">
@@ -88,10 +92,6 @@
         </template>
         &shy;
     </div>
-
-    @error($nameKey)
-        <div class="invalid-feedback" role="alert">{{ $message }}</div>
-    @enderror
 
     @if (isset($help) && !empty($help))
         <div class="form-text">{{ $help }}</div>
