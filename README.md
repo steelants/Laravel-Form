@@ -57,7 +57,7 @@ SteelAnts Laravel-Form provides:
 
 ## Other Packages
 
-- [laravel-auth](https://github.com/steelants/laravel-auth)
+- [Laravel-Auth](https://github.com/steelants/Laravel-Auth)
 - [Livewire-DataTable](https://github.com/steelants/Livewire-DataTable)
 - [Laravel-Boilerplate.Warehouse](https://github.com/steelants/Laravel-Boilerplate.Warehouse)
 - [Laravel-Boilerplate](https://github.com/steelants/Laravel-Boilerplate)
