@@ -26,14 +26,6 @@ Created by <a href="https://steelants.cz">SteelAnts s.r.o.</a>
 
 </div>
 
-## Installation
-
-Install the package using Composer:
-
-```bash
-composer require steelants/form
-```
-
 ## Features
 
 SteelAnts Laravel-Form provides:
@@ -49,17 +41,6 @@ SteelAnts Laravel-Form provides:
 - Price input with VAT modes
 - Button with confirmation
 - Livewire and classic form support
-
-## Usage
-
-Components are used with the `form::` namespace:
-
-```blade
-<x-form::form wire:submit="save">
-    <x-form::input wire:model="name" label="Name" />
-    <x-form::button class="btn-primary" type="submit">Save</x-form::button>
-</x-form::form>
-```
 
 ## Documentation
 
