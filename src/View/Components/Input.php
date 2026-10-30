@@ -26,6 +26,7 @@ class Input extends Component
         public ?string $help = null,
         public ?array $datalist = null,
         public ?string $id = null,
+        public bool $strength = false,
     ) {
         if($type == 'checkbox') throw new Exception(__('Invalid input type'));
 

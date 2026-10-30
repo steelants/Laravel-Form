@@ -22,6 +22,16 @@
         @if (!empty($datalist)) list="{{ $key }}-datalist" @endif
     >
 
+    @if ($strength && $type == 'password')
+        <div class="strength" data-bs-strength data-bs-input="#{{ $id }}">
+            <div class="strength-segment"></div>
+            <div class="strength-segment"></div>
+            <div class="strength-segment"></div>
+            <div class="strength-segment"></div>
+        </div>
+        <span class="strength-text"></span>
+    @endif
+
     @if (!empty($datalist))
         <datalist id="{{ $key }}-datalist">
             @foreach ($datalist as $val)
