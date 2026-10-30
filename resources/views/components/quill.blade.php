@@ -43,7 +43,7 @@
 
         <div id="{{ $key }}" class="quill-editor" x-ref="editor"></div>
         <div class="quill-loading">
-            <div class="spinner-border text-secondary" role="status"></div>
+            <div class="spinner-border fg-secondary" role="status"></div>
         </div>
     </div>
 

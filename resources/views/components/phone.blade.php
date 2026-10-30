@@ -66,7 +66,7 @@
     @endif
 
     <div class="input-group {{ $errors->has($nameKey) ? 'is-invalid' : '' }}">
-        <select class="form-select flex-grow-0 flex-shrik-0 w-22" x-model="preselection" x-on:change="updateInput()">
+        <select class="form-control flex-grow-0 flex-shrik-0 w-22" x-model="preselection" x-on:change="updateInput()">
             @foreach($preselections as $val)
                 <option value="{{ $val }}">{{ $val }}</option>
             @endforeach

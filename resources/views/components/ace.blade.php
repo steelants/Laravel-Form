@@ -36,7 +36,7 @@
 
         <div id="{{ $key }}" class="ace-editor" x-ref="editor"></div>
         <div class="ace-loading">
-            <div class="spinner-border text-secondary" role="status"></div>
+            <div class="spinner-border fg-secondary" role="status"></div>
         </div>
     </div>
 
