@@ -23,13 +23,16 @@
     >
 
     @if ($strength && $type == 'password')
-        <div class="strength" data-bs-strength data-bs-input="#{{ $id }}">
-            <div class="strength-segment"></div>
-            <div class="strength-segment"></div>
-            <div class="strength-segment"></div>
-            <div class="strength-segment"></div>
+        {{-- Bootstrap initializes [data-bs-strength] only on page load, Alpine covers inputs rendered later by Livewire --}}
+        <div wire:ignore x-data x-init="bootstrap.Strength.getOrCreateInstance($el.firstElementChild)">
+            <div class="strength" data-bs-strength data-bs-input="#{{ $id }}">
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+            </div>
+            <span class="strength-text"></span>
         </div>
-        <span class="strength-text"></span>
     @endif
 
     @if (!empty($datalist))
