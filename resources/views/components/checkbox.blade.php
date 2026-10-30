@@ -2,11 +2,11 @@
     $nameKey = $attributes->whereStartsWith('wire:model')->first() ?? $name ?? '';
 @endphp
 
-<div class="form-check {{ $groupClass }}">
+<div class="form-field {{ $groupClass }}">
     <label>
         <input
             @isset($id) id="{{ $id }}" @endisset
-            {{ $attributes->class(['form-check-input', 'is-invalid' => $errors->has($nameKey)]) }}
+            {{ $attributes->class(['check', 'is-invalid' => $errors->has($nameKey)]) }}
             type="checkbox"
             @isset($name)
                 name="{{ $name }}"
@@ -15,7 +15,7 @@
             @endisset
         >
         @if (!empty($label))
-            <span class="form-check-label"
+            <span
                 @isset($id) id="{{ $id }}-label" @endisset
             >
                 {{ $label }}

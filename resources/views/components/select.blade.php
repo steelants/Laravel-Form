@@ -13,7 +13,7 @@
 
     <select
         @isset($id) id="{{ $id }}" @endisset
-        {{ $attributes->class(['form-select', 'is-invalid' => $errors->has($nameKey)]) }}
+        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($nameKey)]) }}
         @isset($name)
             name="{{ $name }}"
         @endisset
